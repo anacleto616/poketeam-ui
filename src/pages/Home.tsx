@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getPokemonsDetails } from '../services/getPokemonDetails';
 import { listPokemons } from '../services/listPokemons';
 import { PokemonListType } from '../types/ListPokemonsType';
-import { PokemonDetail } from '../types/PokemonDetail';
+import { PokemonDetailType } from '../types/PokemonDetailType';
 
 const Home = () => {
   const [pokemons, setPokemons] = useState<PokemonListType[]>([]);
-  const [pokemonDetails, setPokemonDetails] = useState<PokemonDetail[]>([]);
+  const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailType[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -22,12 +23,12 @@ const Home = () => {
         .then(response => setPokemonDetails(response))
         .catch(error => console.log(error));
     })();
-  }, []);
+  }, [pokemons]);
 
   return (
     <section className="max-w-5xl w-full mx-auto my-0 flex flex-wrap items-center justify-center">
       {pokemonDetails?.map((pokemon) => (
-        <div key={pokemon.id} className="w-1/5 flex flex-col items-center justify-center mx-2 mb-12">
+        <Link to={`/pokemons/${pokemon.id}}`} key={pokemon.id} className="w-1/5 flex flex-col items-center justify-center mx-2 mb-12">
           <img
             className="bg-gray-100 w-full"
             src={pokemon?.sprites?.other?.['official-artwork'].front_default}
@@ -42,7 +43,7 @@ const Home = () => {
               </span>
             ))}
           </div>
-        </div>
+        </Link>
       ))}
     </section>
   );
