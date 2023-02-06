@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { pokeApi } from '../libraries/axios';
 import { PokemonDetailType } from '../types/PokemonDetailType';
 
@@ -10,6 +10,12 @@ const PokemonDetails = () => {
 
   const correctId = id?.charAt(0);
 
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate('/');
+  };
+
   useEffect(() => {
     (async () => {
       await pokeApi.get<PokemonDetailType>(`/${correctId}`)
@@ -19,8 +25,8 @@ const PokemonDetails = () => {
   }, []);
 
   return (
-    <section className="max-w-5xl w-full mx-auto my-0 flex flex-wrap items-center justify-center">
-      <div className="w-1/2 flex flex-col items-center justify-center mx-2 mb-12">
+    <section className="max-w-5xl w-full mx-auto mb-0 mt-5 flex flex-col flex-wrap items-center justify-center">
+      <div className="w-1/3 flex flex-col items-center justify-center mx-2 mb-6">
         <img
           className="bg-gray-100 w-full"
           src={pokemonDetail?.sprites?.other?.['official-artwork'].front_default}
@@ -36,6 +42,9 @@ const PokemonDetails = () => {
           ))}
         </div>
       </div>
+      <button onClick={goToHome} className='bg-teal-500 rounded-md p-2 w-1/5'>
+        voltar
+      </button>
     </section>
   );
 };
