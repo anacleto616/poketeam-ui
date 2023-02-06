@@ -2,7 +2,7 @@
 
 ## 💻 Funcionalidades
 
-- Página de listagem de pokemons gerada a partir da pokepi
+- Página de listagem de pokemons gerada a partir da pokeapi
 - Página de detalhes de um pokemon específico
 - Página de listagem de Poketeams
 - Página de cadastro de Poketeams
