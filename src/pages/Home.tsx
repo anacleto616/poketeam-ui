@@ -26,7 +26,7 @@ const Home = () => {
   }, [pokemons]);
 
   return (
-    <section className="max-w-5xl w-full mx-auto my-0 flex flex-wrap items-center justify-center">
+    <section className="max-w-5xl w-full mx-auto mb-0 mt-4 flex flex-wrap items-center justify-center">
       {pokemonDetails?.map((pokemon) => (
         <Link to={`/pokemons/${pokemon.id}}`} key={pokemon.id} className="w-1/5 flex flex-col items-center justify-center mx-2 mb-12">
           <img
