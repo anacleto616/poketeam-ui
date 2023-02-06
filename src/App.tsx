@@ -1,7 +1,13 @@
-import RoutesApp from './routes/RoutesApp';
+import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
 
 function App() {
-  return <RoutesApp />;
+  return (
+    <div>
+      <Header />
+      <Outlet />
+    </div>
+  );
 }
 
 export default App;
